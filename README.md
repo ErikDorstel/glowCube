@@ -26,7 +26,9 @@ ESP32 based RGB Matrix Cube
 ![IMAGE ALT TEXT HERE](documentation/xx.png)
 #### Web UI
 ![IMAGE ALT TEXT HERE](documentation/webui.png)
-#### Matrix Orientation
+#### Matrix orientation
 ![IMAGE ALT TEXT HERE](documentation/matrix_orientation.png)
-#### LED Orientation
+#### LED orientation
 ![IMAGE ALT TEXT HERE](documentation/led_orientation.png)
+#### MPU6050 orientation
+![IMAGE ALT TEXT HERE](documentation/mpu6050_orientation.png)
