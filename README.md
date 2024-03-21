@@ -24,6 +24,7 @@ ESP32 based RGB Matrix Cube
 * GPIO 18 - WS
 #### Development Hardware
 ![IMAGE ALT TEXT HERE](documentation/glowCube_a.png)
+![IMAGE ALT TEXT HERE](documentation/glowCube_b.png)
 #### Web UI
 ![IMAGE ALT TEXT HERE](documentation/webui.png)
 #### Matrix orientation
