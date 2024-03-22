@@ -6,6 +6,7 @@ const char* appDesc="RGB LED Cube";
 #include "Cube.h"
 #include "Palettes.h"
 #include "Tilt.h"
+#include "Mic.h"
 #include "Apps.h"
 #include "WLAN.h"
 #include "DNS.h"
@@ -18,11 +19,13 @@ const char* appDesc="RGB LED Cube";
 #include "appAlarm.h"
 #include "appInsects.h"
 #include "appGlas.h"
+#include "appOscar.h"
 
 void setup() {
   if (debug) { Serial.begin(115200); }
   initCube();
   initTilt();
+  initMic();
   initWLAN();
   initDNS();
   initHTTPServer();
@@ -33,6 +36,7 @@ void setup() {
   initFills();
   initAlarm();
   initInsects();
-  initGlas(); }
+  initGlas();
+  initOscar(); }
 
 void loop() { apps.worker[apps.current](); appsWorker(); wlanWorker(); dnsWorker(); httpServerWorker(); }
