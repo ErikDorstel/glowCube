@@ -15,7 +15,7 @@ struct wlanConfigStruct wlanConfig;
 uint32_t wlanTimer=millis()+20000;
 
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info) {
-  preferences.begin("wlanAuth",false); String ssidStationOld=preferences.getString("ssidStation",""); String passwordStationOld=preferences.getString("passwordStation",""); preferences.end();
+  preferences.begin("wlanAuth",false); String ssidStationOld=preferences.getString("ssidStation","empty"); String passwordStationOld=preferences.getString("passwordStation","empty"); preferences.end();
   if (ssidStationOld!=wlanConfig.ssidStation || passwordStationOld!=wlanConfig.passwordStation) {
     preferences.begin("wlanAuth",false); preferences.putString("ssidStation",wlanConfig.ssidStation); preferences.putString("passwordStation",wlanConfig.passwordStation); preferences.end(); }
   wlanConfig.statusStation=true; wlanConfig.reconnectCount=0;
@@ -27,6 +27,7 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info) {
 
 void connectWLAN() {
   WiFi.setHostname(wlanConfig.ssidAP); wlanTimer=millis()+20000;
+  if (wlanConfig.ssidStation=="empty") { return; }
   if (debug) { Serial.println("WLAN Station " + wlanConfig.ssidStation + " try connect."); }
   WiFi.begin(wlanConfig.ssidStation.c_str(),wlanConfig.passwordStation.c_str()); }
 
