@@ -6,10 +6,10 @@ DEFINE_GRADIENT_PALETTE( fireColorsDefine ) {
 CRGBPalette256 fireColors=fireColorsDefine;
 
 DEFINE_GRADIENT_PALETTE( plasmaColorsDefine ) {
-     0, 255,  0,  0,
+     0,   0,  0,255,
    127,   8,  0,  0,
    128,   0,  0,  8,
-   255,   0,  0,255 };
+   255, 255,  0,  0 };
 CRGBPalette256 plasmaColors=plasmaColorsDefine;
 
 void modifyPlasmaColors(int hueA,int hueB,int border,int ratio) {

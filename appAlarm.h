@@ -9,7 +9,7 @@ void appAlarm() {
     x++; x%=32; } }
 
 void initAlarm() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Alarm");
-  strcpy(apps.config[apps.count-1],"2,bright,delay");
-  apps.worker[apps.count-1]=appAlarm; }
+  strcpy(apps.name[apps.count],"Alarm");
+  strcpy(apps.config[apps.count],"2,bright,delay");
+  apps.worker[apps.count]=appAlarm;
+  apps.count++; }

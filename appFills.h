@@ -7,7 +7,7 @@ void appFills() {
     hue+=32; if (hue>224) { hue=0; } } }
 
 void initFills() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Fills");
-  strcpy(apps.config[apps.count-1],"2,bright,delay");
-  apps.worker[apps.count-1]=appFills; }
+  strcpy(apps.name[apps.count],"Fills");
+  strcpy(apps.config[apps.count],"2,bright,delay");
+  apps.worker[apps.count]=appFills;
+  apps.count++; }

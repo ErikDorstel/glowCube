@@ -33,7 +33,7 @@ void appPlasma() {
   delay(10); }
 
 void initPlasma() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Plasma");
-  strcpy(apps.config[apps.count-1],"8,bright,speed,hueA,hueSpeedA,hueB,hueSpeedB,border,ratio");
-  apps.worker[apps.count-1]=appPlasma; }
+  strcpy(apps.name[apps.count],"Plasma");
+  strcpy(apps.config[apps.count],"8,bright,speed,hueA,hueSpeedA,hueB,hueSpeedB,border,ratio");
+  apps.worker[apps.count]=appPlasma;
+  apps.count++; }

@@ -63,7 +63,7 @@ void appsFire() {
   delay(10); } // synchronize speed and movement, standard value 10
 
 void initFire() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Fire");
-  strcpy(apps.config[apps.count-1],"1,bright");
-  apps.worker[apps.count-1]=appsFire; }
+  strcpy(apps.name[apps.count],"Fire");
+  strcpy(apps.config[apps.count],"1,bright");
+  apps.worker[apps.count]=appsFire;
+  apps.count++; }

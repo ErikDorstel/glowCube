@@ -2,9 +2,9 @@ struct configStruct {
   int bright=22;
   int delay=63;
   int speed=22;
-  int hueA=0;
+  int hueA=160;
   int hueSpeedA=0;
-  int hueB=160;
+  int hueB=255;
   int hueSpeedB=0;
   int border=0;
   int ratio=0;

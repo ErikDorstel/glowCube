@@ -14,7 +14,7 @@ void appGlas() {
   cubeShow(); }
 
 void initGlas() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Glas");
-  strcpy(apps.config[apps.count-1],"1,bright");
-  apps.worker[apps.count-1]=appGlas; }
+  strcpy(apps.name[apps.count],"Glas");
+  strcpy(apps.config[apps.count],"1,bright");
+  apps.worker[apps.count]=appGlas;
+  apps.count++; }

@@ -7,7 +7,7 @@ void appOscar() {
   cubeShow(); }
 
 void initOscar() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Oscar");
-  strcpy(apps.config[apps.count-1],"1,bright");
-  apps.worker[apps.count-1]=appOscar; }
+  strcpy(apps.name[apps.count],"Oscar");
+  strcpy(apps.config[apps.count],"1,bright");
+  apps.worker[apps.count]=appOscar;
+  apps.count++; }

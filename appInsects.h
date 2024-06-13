@@ -18,7 +18,7 @@ void appInsects() {
     cubeShow(); } }
 
 void initInsects() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Insects");
-  strcpy(apps.config[apps.count-1],"2,bright,delay");
-  apps.worker[apps.count-1]=appInsects; }
+  strcpy(apps.name[apps.count],"Insects");
+  strcpy(apps.config[apps.count],"2,bright,delay");
+  apps.worker[apps.count]=appInsects;
+  apps.count++; }

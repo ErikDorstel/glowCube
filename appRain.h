@@ -30,8 +30,7 @@ void appRain() {
 }
 
 void initRain() {
-  apps.count++;
-  strcpy(apps.name[apps.count-1],"Rain");
-  strcpy(apps.config[apps.count-1],"6,bright,delay,hueA,hueB,count,length");
-  apps.worker[apps.count-1]=appRain;
-  config.hueA=0; config.hueB=255; }
+  strcpy(apps.name[apps.count],"Rain");
+  strcpy(apps.config[apps.count],"6,bright,delay,hueA,hueB,count,length");
+  apps.worker[apps.count]=appRain;
+  apps.count++; }
