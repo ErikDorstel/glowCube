@@ -107,7 +107,7 @@ function setHueA(value) {
   for (i=0;i<hueValues.length;i++) { if (hueA==hueValues[i]) { break; } }
   if (value==0 && hueValues[i-1]>-1) { hueA=hueValues[i-1]; }
   if (value==1 && hueValues[i+1]>-1) { hueA=hueValues[i+1]; }
-  if (value==2) { hueA=0; }
+  if (value==2) { hueA=160; }
   requestAJAX('setHueA,' + hueA);
   id("hueAValue").innerHTML="&nbsp;"; }
 
@@ -123,7 +123,7 @@ function setHueB(value) {
   for (i=0;i<hueValues.length;i++) { if (hueB==hueValues[i]) { break; } }
   if (value==0 && hueValues[i-1]>-1) { hueB=hueValues[i-1]; }
   if (value==1 && hueValues[i+1]>-1) { hueB=hueValues[i+1]; }
-  if (value==2) { hueB=160; }
+  if (value==2) { hueB=255; }
   requestAJAX('setHueB,' + hueB);
   id("hueBValue").innerHTML="&nbsp;"; }
 
