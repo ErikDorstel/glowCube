@@ -20,7 +20,7 @@ void appRain() {
         rains[i].y++;
         for (int j=0;j<config.length;j++) {
           if (rains[i].y-j<height && rains[i].y>=j) {
-            cubeSet(rains[i].x,rains[i].y-j,CHSV(rains[i].c,255,255/(config.length-1)*(config.length-1-j)));
+            cubeSet(rains[i].x,rains[i].y-j,CHSV(rains[i].c,255,255*(config.length-1-j)/(config.length-1)));
           }  
         }
       }
