@@ -7,7 +7,9 @@ struct configStruct {
   int hueB=160;
   int hueSpeedB=0;
   int border=0;
-  int ratio=0; } config;
+  int ratio=0;
+  int count=20;
+  int length=5; } config;
 
 struct appsStruct {
   int count=0;

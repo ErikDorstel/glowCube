@@ -14,7 +14,9 @@ String httpget(String request) {
     response+=String(config.hueB) + ",";
     response+=String(config.hueSpeedB) + ",";
     response+=String(config.border) + ",";
-    response+=String(config.ratio) + ","; }
+    response+=String(config.ratio) + ",";
+    response+=String(config.count) + ",";
+    response+=String(config.length) + ","; }
 
   else if (request.indexOf("/setApp")>=0) {
     int a=request.indexOf(",")+1;
@@ -74,6 +76,16 @@ String httpget(String request) {
     config.ratio=request.substring(a).toInt();
     modifyPlasmaColors(config.hueA,config.hueB,config.border,config.ratio);
     response+=String(config.ratio) + ","; }
+
+  else if (request.indexOf("/setCount")>=0) {
+    int a=request.indexOf(",")+1;
+    config.count=request.substring(a).toInt();
+    response+=String(config.count) + ","; }
+
+  else if (request.indexOf("/setLength")>=0) {
+    int a=request.indexOf(",")+1;
+    config.length=request.substring(a).toInt();
+    response+=String(config.length) + ","; }
 
   // WLAN Choose specific pages
 

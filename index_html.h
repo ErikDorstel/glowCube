@@ -37,7 +37,9 @@ function webUIinit() {
   hueSpeedValues=[-1,0,1,2,3,4,5,6,7,8,9,10,-1];
   borderValues=[-1,0,16,32,48,64,80,96,112,-1];
   ratioValues=[-1,0,16,32,48,64,80,96,112,-1];
-  appList=[]; appConfig=[]; bright=0; delay=0; speed=0; hueA=0; hueSpeedA=0; hueB=0; hueSpeedB=0; border=0; ratio=0;
+  countValues=[-1,5,10,20,40,60,80,120,160,200,-1];
+  lengthValues=[-1,2,3,4,5,6,7,8,9,10,11,12,-1];
+  appList=[]; appConfig=[]; bright=0; delay=0; speed=0; hueA=0; hueSpeedA=0; hueB=0; hueSpeedB=0; border=0; ratio=0; count=0; length=0;
   red="#E09090"; green="#90E090"; yellow="#FFE460"; gray="#e0e0e0"; darkgray="#d0d0d0"; blue="#c2d5ed";
   appName="&nbsp;"; appDesc="&nbsp;"; ajaxObj=[]; requestAJAX('appName'); requestAJAX('getApps'); requestAJAX('getApp'); }
 
@@ -53,7 +55,9 @@ function doDisplayApps() {
   hueB=appList[listCount+6]*1; id("hueBValue").innerHTML=hueB;
   hueSpeedB=appList[listCount+7]*1; id("hueSpeedBValue").innerHTML=hueSpeedB;
   border=appList[listCount+8]*1; id("borderValue").innerHTML=border;
-  ratio=appList[listCount+9]*1; id("ratioValue").innerHTML=ratio; }
+  ratio=appList[listCount+9]*1; id("ratioValue").innerHTML=ratio;
+  count=appList[listCount+10]*1; id("countValue").innerHTML=count;
+  length=appList[listCount+11]*1; id("lengthValue").innerHTML=length; }
 
 function doMarkApps() {
   listCount=appList[0]*1;
@@ -68,6 +72,8 @@ function doMarkApps() {
   id("hueSpeedB").style.display="none";
   id("border").style.display="none";
   id("ratio").style.display="none";
+  id("count").style.display="none";
+  id("length").style.display="none";
   configCount=appConfig[1]*1;
   for (i=0;i<configCount;i++) { id(appConfig[i+2]).style.display="block"; } }
 
@@ -145,6 +151,22 @@ function setRatio(value) {
   requestAJAX('setRatio,' + ratio);
   id("ratioValue").innerHTML="&nbsp;"; }
 
+function setCount(value) {
+  for (i=0;i<countValues.length;i++) { if (count==countValues[i]) { break; } }
+  if (value==0 && countValues[i-1]>-1) { count=countValues[i-1]; }
+  if (value==1 && countValues[i+1]>-1) { count=countValues[i+1]; }
+  if (value==2) { count=20; }
+  requestAJAX('setCount,' + count);
+  id("countValue").innerHTML="&nbsp;"; }
+
+function setLength(value) {
+  for (i=0;i<lengthValues.length;i++) { if (length==lengthValues[i]) { break; } }
+  if (value==0 && lengthValues[i-1]>-1) { length=lengthValues[i-1]; }
+  if (value==1 && lengthValues[i+1]>-1) { length=lengthValues[i+1]; }
+  if (value==2) { length=5; }
+  requestAJAX('setLength,' + length);
+  id("lengthValue").innerHTML="&nbsp;"; }
+
 function requestAJAX(value) {
   ajaxObj[value]=new XMLHttpRequest; ajaxObj[value].url=value; ajaxObj[value].open("GET",value,true);
   ajaxObj[value].setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -165,6 +187,8 @@ function replyAJAX(event) {
     else if (event.target.url.startsWith("setHueSpeedB")) { id("hueSpeedBValue").innerHTML=event.target.responseText.split(",")[0]; }
     else if (event.target.url.startsWith("setBorder")) { id("borderValue").innerHTML=event.target.responseText.split(",")[0]; }
     else if (event.target.url.startsWith("setRatio")) { id("ratioValue").innerHTML=event.target.responseText.split(",")[0]; }
+    else if (event.target.url.startsWith("setCount")) { id("countValue").innerHTML=event.target.responseText.split(",")[0]; }
+    else if (event.target.url.startsWith("setLength")) { id("lengthValue").innerHTML=event.target.responseText.split(",")[0]; }
     else if (event.target.url.startsWith("getApp")) { appConfig=event.target.responseText.split(","); doMarkApps(); }
     else if (event.target.url.startsWith("setApp")) { appConfig=event.target.responseText.split(","); doMarkApps(); } } }
 
@@ -234,6 +258,18 @@ function id(id) { return document.getElementById(id); }
           <span class="but" onclick="setRatio(0);">&minus;</span>
           <div style="width:3em" id="ratioValue">&nbsp;</div>
           <span class="but" onclick="setRatio(1);">&plus;</span></div></div>
+<div style="display:none" id="count">
+     <div class="x2" onclick="setCount(2);">Count</div>
+     <div class="x2" style="text-align:left">
+          <span class="but" onclick="setCount(0);">&minus;</span>
+          <div style="width:3em" id="countValue">&nbsp;</div>
+          <span class="but" onclick="setCount(1);">&plus;</span></div></div>
+<div style="display:none" id="length">
+     <div class="x2" onclick="setLength(2);">Length</div>
+     <div class="x2" style="text-align:left">
+          <span class="but" onclick="setLength(0);">&minus;</span>
+          <div style="width:3em" id="lengthValue">&nbsp;</div>
+          <span class="but" onclick="setLength(1);">&plus;</span></div></div>
 </div>
 
 </body></html>
