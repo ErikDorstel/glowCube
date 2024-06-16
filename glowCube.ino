@@ -14,8 +14,9 @@ const char* appDesc="RGB LED Cube";
 
 #include "appFire.h"
 #include "appPlasma.h"
-#include "appRects.h"
 #include "appRain.h"
+#include "appRects.h"
+#include "appSpaghetti.h"
 #include "appFills.h"
 #include "appAlarm.h"
 #include "appInsects.h"
@@ -35,6 +36,7 @@ void setup() {
   initPlasma();
   initRain();
   initRects();
+  initSpaghetti();
   initFills();
   initAlarm();
   initInsects();
