@@ -6,8 +6,8 @@ void appAlarm() {
     cubeClear();
     cubeRect(x,0,8,12,CHSV(hue,255,255));
     hue+=direction;
-    if (hue<=config.hueA) { direction=1; }
-    if (hue>=config.hueB) { direction=-1; }
+    if (hue<=min(config.hueA,config.hueB)) { direction=1; }
+    if (hue>=max(config.hueA,config.hueB)) { direction=-1; }
     x++; x%=32;
     cubeShow(); } }
 
