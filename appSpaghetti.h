@@ -1,10 +1,10 @@
 #define lines 20
 
 void appSpaghetti() {
-  static uint64_t rectTimer;
+  static uint64_t apaghettiTimer;
   static struct lineStruct { uint8_t x; uint8_t y; uint8_t c; } line[lines];
 
-  if (millis()>=rectTimer) { rectTimer=millis()+config.delay;
+  if (millis()>=apaghettiTimer) { apaghettiTimer=millis()+config.delay;
 
     for (uint8_t i=1;i<lines;i++) {
       line[i-1].x=line[i].x; line[i-1].y=line[i].y; line[i-1].c=line[i].c; }
