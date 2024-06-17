@@ -1,29 +1,31 @@
+#define pixels 20
+
 void appInsects() {
-  static struct pixelStruct { float x[20]; float y[20]; uint8_t c[20]; float xDiff[20]; float yDiff[20]; uint8_t xOld[20]; uint8_t yOld[20]; } pixel;
+  static struct { float x; float y; uint8_t c; float xDiff; float yDiff; uint8_t xOld; uint8_t yOld; } pixel[pixels];
   static uint64_t insectsTimer;
   if (millis()>=insectsTimer) { insectsTimer=millis()+config.delay;
     for (int i=0;i<20;i++) {
 
-      if ((pixel.xDiff[i]==0 && pixel.yDiff[i]==0) || random8()==0) {
-        pixel.xDiff[i]=random8(60,100)/100.0; pixel.yDiff[i]=random8(20,100)/100.0;
-        pixel.c[i]=random8(min(config.hueA,config.hueB),max(config.hueA,config.hueB)); }
+      if ((pixel[i].xDiff==0 && pixel[i].yDiff==0) || random8()==0) {
+        pixel[i].xDiff=random8(60,100)/100.0; pixel[i].yDiff=random8(20,100)/100.0;
+        pixel[i].c=random8(min(config.hueA,config.hueB),max(config.hueA,config.hueB)); }
 
-      pixel.x[i]+=pixel.xDiff[i]; pixel.y[i]+=pixel.yDiff[i];
-      if (pixel.x[i]<0) { pixel.x[i]=31; }
-      if (pixel.x[i]>=32) { pixel.x[i]=0; }
-      if (pixel.y[i]<0) { pixel.yDiff[i]*=-1; pixel.y[i]=0; }
-      if (pixel.y[i]>=12) { pixel.yDiff[i]*=-1; pixel.y[i]=11; }
+      pixel[i].x+=pixel[i].xDiff; pixel[i].y+=pixel[i].yDiff;
+      if (pixel[i].x<0) { pixel[i].x=31; }
+      if (pixel[i].x>=32) { pixel[i].x=0; }
+      if (pixel[i].y<0) { pixel[i].yDiff*=-1; pixel[i].y=0; }
+      if (pixel[i].y>=12) { pixel[i].yDiff*=-1; pixel[i].y=11; }
 
-      if ((uint8_t)pixel.y[i]<4) { while (transform[(uint8_t)pixel.x[i]][(uint8_t)pixel.y[i]]==64) {
-        pixel.x[i]+=pixel.xDiff[i]; pixel.y[i]+=pixel.yDiff[i];
-        if (pixel.x[i]<0) { pixel.x[i]=31; }
-        if (pixel.x[i]>=32) { pixel.x[i]=0; }
-        if (pixel.y[i]<0) { pixel.yDiff[i]*=-1; pixel.y[i]=0; }
-        if (pixel.y[i]>=12) { pixel.yDiff[i]*=-1; pixel.y[i]=11; } } }
+      if ((uint8_t)pixel[i].y<4) { while (transform[(uint8_t)pixel[i].x][(uint8_t)pixel[i].y]==64) {
+        pixel[i].x+=pixel[i].xDiff; pixel[i].y+=pixel[i].yDiff;
+        if (pixel[i].x<0) { pixel[i].x=31; }
+        if (pixel[i].x>=32) { pixel[i].x=0; }
+        if (pixel[i].y<0) { pixel[i].yDiff*=-1; pixel[i].y=0; }
+        if (pixel[i].y>=12) { pixel[i].yDiff*=-1; pixel[i].y=11; } } }
 
-      cubeSet(pixel.xOld[i],pixel.yOld[i],CHSV(0,0,0));
-      cubeSet(pixel.x[i],pixel.y[i],CHSV(pixel.c[i],255,255));
-      pixel.xOld[i]=pixel.x[i]; pixel.yOld[i]=pixel.y[i]; }
+      cubeSet(pixel[i].xOld,pixel[i].yOld,CHSV(0,0,0));
+      cubeSet(pixel[i].x,pixel[i].y,CHSV(pixel[i].c,255,255));
+      pixel[i].xOld=pixel[i].x; pixel[i].yOld=pixel[i].y; }
     cubeShow(); } }
 
 void initInsects() {

@@ -3,8 +3,8 @@ void appFills() {
   static uint64_t fillsTimer;
   if (millis()>=fillsTimer) { fillsTimer=millis()+config.delay;
     cubeFill(CHSV(hue,255,255),0);
-    cubeShow();
-    hue+=32; if (hue>224) { hue=0; } } }
+    hue+=32; if (hue>224) { hue=0; }
+    cubeShow(); } }
 
 void initFills() {
   strcpy(apps.name[apps.count],"Fills");

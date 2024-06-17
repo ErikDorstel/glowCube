@@ -1,4 +1,4 @@
-void appsFire() {
+void appFire() {
 
   // noisemap parameter declaration
   static uint32_t x,y,z;
@@ -65,5 +65,5 @@ void appsFire() {
 void initFire() {
   strcpy(apps.name[apps.count],"Fire");
   strcpy(apps.config[apps.count],"1,bright");
-  apps.worker[apps.count]=appsFire;
+  apps.worker[apps.count]=appFire;
   apps.count++; }

@@ -1,15 +1,15 @@
-#define lines 20
+#define lines 40
 
 void appSpaghetti() {
+  static struct { uint8_t x; uint8_t y; uint8_t c; } line[lines];
   static uint64_t apaghettiTimer;
-  static struct lineStruct { uint8_t x; uint8_t y; uint8_t c; } line[lines];
-
   if (millis()>=apaghettiTimer) { apaghettiTimer=millis()+config.delay;
 
     for (uint8_t i=1;i<lines;i++) {
       line[i-1].x=line[i].x; line[i-1].y=line[i].y; line[i-1].c=line[i].c; }
 
-    line[lines-1].x=random8(32); line[lines-1].y=random8(12); line[lines-1].c=random8(min(config.hueA,config.hueB),max(config.hueA,config.hueB));
+    line[lines-1].x=random8(32); line[lines-1].y=random8(12);
+    line[lines-1].c=random8(min(config.hueA,config.hueB),max(config.hueA,config.hueB));
 
     for (uint8_t i=1;i<lines;i++) {
       cubeLine(line[i-1].x,line[i-1].y,line[i].x,line[i].y,CHSV(line[i-1].c,255,255*(i-1)/(lines-2))); }
