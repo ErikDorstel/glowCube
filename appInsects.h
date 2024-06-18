@@ -1,12 +1,13 @@
 #define pixels 20
 
 void appInsects() {
+  hueWorker();
   static struct { float x; float y; uint8_t c; float xDiff; float yDiff; uint8_t xOld; uint8_t yOld; } pixel[pixels];
   static uint64_t insectsTimer;
   if (millis()>=insectsTimer) { insectsTimer=millis()+config.delay;
     for (int i=0;i<20;i++) {
 
-      if ((pixel[i].xDiff==0 && pixel[i].yDiff==0) || random8()==0) {
+      if ((pixel[i].xDiff==0 && pixel[i].yDiff==0) || random8(100)==0) {
         pixel[i].xDiff=random8(60,100)/100.0; pixel[i].yDiff=random8(20,100)/100.0;
         pixel[i].c=random8(min(config.hueA,config.hueB),max(config.hueA,config.hueB)); }
 
@@ -30,6 +31,6 @@ void appInsects() {
 
 void initInsects() {
   strcpy(apps.name[apps.count],"Insects");
-  strcpy(apps.config[apps.count],"4,bright,delay,hueA,hueB");
+  strcpy(apps.config[apps.count],"5,bright,delay,hueA,hueSpeedA,hueB");
   apps.worker[apps.count]=appInsects;
   apps.count++; }

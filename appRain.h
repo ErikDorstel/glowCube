@@ -1,6 +1,7 @@
 #define rains 200
 
 void appRain() {
+  hueWorker();
   static struct { uint8_t x; uint8_t y=100; uint8_t c; } rain[rains];
   static uint64_t rainTimer=millis();
   if (millis()>rainTimer) {
@@ -28,6 +29,6 @@ void appRain() {
 
 void initRain() {
   strcpy(apps.name[apps.count],"Rain");
-  strcpy(apps.config[apps.count],"6,bright,delay,hueA,hueB,count,length");
+  strcpy(apps.config[apps.count],"7,bright,delay,hueA,hueSpeedA,hueB,count,length");
   apps.worker[apps.count]=appRain;
   apps.count++; }

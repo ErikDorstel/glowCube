@@ -1,6 +1,7 @@
 #define rects 20
 
 void appRects() {
+  hueWorker();
   static struct { uint8_t xa; uint8_t ya; uint8_t xb; uint8_t yb; uint8_t c; } rect[rects];
   static uint64_t rectTimer;
   if (millis()>=rectTimer) { rectTimer=millis()+config.delay;
@@ -20,6 +21,6 @@ void appRects() {
 
 void initRects() {
   strcpy(apps.name[apps.count],"Rects");
-  strcpy(apps.config[apps.count],"4,bright,delay,hueA,hueB");
+  strcpy(apps.config[apps.count],"5,bright,delay,hueA,hueSpeedA,hueB");
   apps.worker[apps.count]=appRects;
   apps.count++; }

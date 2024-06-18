@@ -43,4 +43,4 @@ void setup() {
   initGlas();
   initOscar(); }
 
-void loop() { apps.worker[apps.current](); appsWorker(); wlanWorker(); dnsWorker(); httpServerWorker(); }
+void loop() { apps.worker[apps.current](); brightWorker(); wlanWorker(); dnsWorker(); httpServerWorker(); }

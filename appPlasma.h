@@ -1,4 +1,5 @@
 void appPlasma() {
+  palettesWorker();
 
   // noisemap parameter declaration
   static uint32_t x,y,z;

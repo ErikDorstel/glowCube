@@ -1,6 +1,7 @@
 #define lines 40
 
 void appSpaghetti() {
+  hueWorker();
   static struct { uint8_t x; uint8_t y; uint8_t c; } line[lines];
   static uint64_t apaghettiTimer;
   if (millis()>=apaghettiTimer) { apaghettiTimer=millis()+config.delay;
@@ -18,6 +19,6 @@ void appSpaghetti() {
 
 void initSpaghetti() {
   strcpy(apps.name[apps.count],"Spaghetti");
-  strcpy(apps.config[apps.count],"4,bright,delay,hueA,hueB");
+  strcpy(apps.config[apps.count],"5,bright,delay,hueA,hueSpeedA,hueB");
   apps.worker[apps.count]=appSpaghetti;
   apps.count++; }
