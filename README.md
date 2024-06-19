@@ -19,14 +19,16 @@ ESP32 based RGB Matrix Cube
 * GPIO 21 - SDA
 * GPIO 22 - SCL
 #### GPIO INMP441 (I2S)
-* GPIO 16 - DIN
-* GPIO 17 - BCK
+* GPIO 16 - SD
+* GPIO 17 - SCK
 * GPIO 18 - WS
 #### Development Hardware
 ![IMAGE ALT TEXT HERE](documentation/glowCube_a.png)
 ![IMAGE ALT TEXT HERE](documentation/glowCube_b.png)
 #### Web UI
 ![IMAGE ALT TEXT HERE](documentation/webui.png)
+#### Schematic
+![IMAGE ALT TEXT HERE](documentation/glowCube.png)
 #### Matrix orientation
 ![IMAGE ALT TEXT HERE](documentation/matrix_orientation.png)
 #### LED orientation
